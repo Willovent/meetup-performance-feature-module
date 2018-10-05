@@ -4,8 +4,8 @@
   "newProjectRoot": "projects",
   "projects": {
     "feature-module": {
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/feature-module",
+      "sourceRoot": "projects/feature-module/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -14,16 +14,19 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/feature-module",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "index": "projects/feature-module/src/index.html",
+            "main": "projects/feature-module/src/main.ts",
+            "polyfills": "projects/feature-module/src/polyfills.ts",
+            "tsConfig": "projects/feature-module/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/feature-module/src/favicon.ico",
+              "projects/feature-module/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "projects/feature-module/src/styles.scss"
             ],
             "scripts": []
           },
@@ -31,8 +34,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/feature-module/src/environments/environment.ts",
+                  "with": "projects/feature-module/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -64,29 +67,12 @@
             "browserTarget": "feature-module:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/feature-module/tsconfig.app.json",
+              "projects/feature-module/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -95,26 +81,26 @@
         }
       }
     },
-    "feature-module-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
+    "back-office": {
+      "root": "projects/back-office",
+      "sourceRoot": "projects/back-office/src",
+      "projectType": "library",
+      "prefix": "bo",
       "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "feature-module:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "feature-module:serve:production"
-            }
+            "tsConfig": "projects/back-office/tsconfig.lib.json",
+            "project": "projects/back-office/ng-package.json"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": [
+              "projects/back-office/tsconfig.lib.json",
+              "projects/back-office/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
@@ -123,5 +109,15 @@
       }
     }
   },
-  "defaultProject": "feature-module"
+  "defaultProject": "feature-module",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    },
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
+  }
 }

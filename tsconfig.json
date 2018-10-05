@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "back-office": [
+        "dist/back-office"
+      ],
+      "back-office/*": [
+        "dist/back-office/*"
+      ]
+    }
   }
 }
