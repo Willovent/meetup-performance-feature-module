@@ -1,0 +1,18 @@
+:host {
+  .mat-stepper-horizontal {
+      background: transparent;
+  }
+  .lastname {
+      margin-left: 16px;
+  }
+  mat-card-actions {
+      display: flex;
+  }
+  mat-card-content.vertical {
+      display: flex;
+      flex-direction: column;
+  }
+  .info-icon {
+      margin-right: 4px;
+  }
+}

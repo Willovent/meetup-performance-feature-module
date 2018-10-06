@@ -23,6 +23,12 @@
       ],
       "back-office/*": [
         "dist/back-office/*"
+      ],
+      "core": [
+        "dist/core"
+      ],
+      "core/*": [
+        "dist/core/*"
       ]
     }
   }
