@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { appRouting } from './app.routing.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { CoreModule } from '../../../core/src/public_api';
-import { MatStepperModule, MatCardModule, MatFormFieldModule, MatError, MatDatepickerModule, MatSelectModule, MatOptionModule, MatNativeDateModule, MatInputModule } from '@angular/material';
+import { MatStepperModule, MatCardModule, MatFormFieldModule, MatDatepickerModule, MatSelectModule, MatOptionModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
